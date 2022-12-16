@@ -466,22 +466,22 @@ public class Game {
                 Scanner scanner3 = new Scanner(System.in);
                 System.out.println("Veuillez saisir la classe du héros " + j + " de votre équipe (c pour chevalier, a pour archer, m pour mage, g pour guerisseur):");
                 cl = scanner3.next();
-                if (cl.equals("c")){
+                if (cl.equalsIgnoreCase("c")){
                     System.out.println("Le héro " + j + " de votre équipe est un chevalier");
                     System.out.println("Est-ce exact? (y pour oui, n pour non)");
                     YN = scanner3.next();
                 }
-                else if (cl.equals("a")){
+                else if (cl.equalsIgnoreCase("a")){
                     System.out.println("Le héro " + j + " de votre équipe est un archer");
                     System.out.println("Est-ce exact? (y pour oui, n pour non)");
                     YN = scanner3.next();
                 }
-                else if (cl.equals("m")){
+                else if (cl.equalsIgnoreCase("m")){
                     System.out.println("Le héro " + j + " de votre équipe est un mage");
                     System.out.println("Est-ce exact? (y pour oui, n pour non)");
                     YN = scanner3.next();
                 }
-                else if (cl.equals("g")){
+                else if (cl.equalsIgnoreCase("g")){
                     System.out.println("Le héro " + j + " de votre équipe est un guérisseur");
                     System.out.println("Est-ce exact? (y pour oui, n pour non)");
                     YN = scanner3.next();
