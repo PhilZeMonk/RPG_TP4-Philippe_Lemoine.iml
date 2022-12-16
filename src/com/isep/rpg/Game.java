@@ -78,17 +78,18 @@ public class Game {
         System.out.println("###### Description de votre sac de départ ######");
         System.out.println(" ");
         sac();
-        TimeUnit.SECONDS.sleep(1);
+        TimeUnit.SECONDS.sleep(5);
         nbTour = nbTour();
         for (int i = 0; i < nbTour; i++){
             boolean etatH = KoA();
             if (etatH == pasKo){
+                System.out.println(" ");
                 System.out.println("#########################################");
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.SECONDS.sleep(2);
                 System.out.println("Attention, il y a des mouvements dans les hautes herbes, vite allons voir...");
                 TimeUnit.SECONDS.sleep(3);
                 System.out.println("Oh non, c'est une embuscade, les ennemis vous encerclent");
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.SECONDS.sleep(3);
                 nbEnnemis();
                 if (nE == 1){
                     System.out.println("Voici votre adversaire");
@@ -108,6 +109,7 @@ public class Game {
         }
         boolean etatHF = KoA();
         if (etatHF == pasKo){
+            System.out.println(" ");
             System.out.println("Vous arrivez au niveau du château, où la chose qui tire les ficelles dans l'ombre se terre avec la princesse kidnappée.");
             ennemiB[0] = new MaitreDuMal("Le Maître du Mal");
             combat(ennemiB);
@@ -122,7 +124,9 @@ public class Game {
         Scanner choix = new Scanner(System.in);
         int c = 0;
         int c2;
-        while (c !=1){
+        int rep = 0;
+        while (c !=1 || rep == 1){
+            rep = 0;
             try{
                 if (c == 0){
                     System.out.println("""
@@ -159,7 +163,7 @@ public class Game {
                         }
                         else{
                             System.out.println("Aucune action possible, veuillez répéter");
-                            entreCombat();
+                            rep = 1;
                         }
                     }
                     catch (InputMismatchException e){
@@ -170,7 +174,7 @@ public class Game {
                 }
                 else if (c > 1){
                     System.out.println("Commande introuvable, veuillez répéter");
-                    entreCombat();
+                    rep = 1;
                 }
             }
             catch (InputMismatchException e){
@@ -178,6 +182,9 @@ public class Game {
                 choix.nextLine();
                 continue;
             }
+        }
+        if (rep == 1){
+            entreCombat();
         }
     }
     public void apresCRa(){
