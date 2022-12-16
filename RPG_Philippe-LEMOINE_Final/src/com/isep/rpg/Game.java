@@ -694,7 +694,7 @@ public class Game {
                 if (KoE == pasKo){
                     for (i = 0; i < nE; i++){
                         if (ennemisC[i].healthPoint > 0) {
-                            attaqueEn(ennemisC);
+                            attaqueEn(ennemisC[i]);
                         }
                     }
                 }
@@ -1757,7 +1757,6 @@ public class Game {
                 System.out.println("Qui voulez-vous attaquer?");
                 do {
                     rep = 0;
-                    afficheEnnemies();
                     try{
                         en0 = lance.nextInt();
                         en = en0 - 1;
@@ -1874,34 +1873,32 @@ public class Game {
         }
     }
 
-    public void attaqueEn(Ennemy[] ennemiA){
+    public void attaqueEn(Ennemy ennemiA){
         boolean verif;
         int qui;
-        if (ennemiA == ennemiB){
-            if (ennemiA[0].healthPoint != 0){
+        if (ennemiA == ennemiB[0]){
+            if (ennemiA.healthPoint != 0){
                 Random who = new Random();
                 do {
                     qui = who.nextInt(nH);
                     verif = verifHero(qui);
                 } while (verif == Ko);
-                atEn(ennemiA[0], hero[qui]);
+                atEn(ennemiA, hero[qui]);
                 if (hero[qui].healthPoint == 0){
                     System.out.println(hero[qui].name + " est KO");
                 }
             }
         }
         else{
-            for (int i = 0; i < nE; i++){
-                if (ennemiA[i].healthPoint != 0){
-                    Random who = new Random();
-                    do {
-                        qui = who.nextInt(nH);
-                        verif = verifHero(qui);
-                    } while (verif == Ko); //Le héros est mort
-                    atEn(ennemiA[i], hero[qui]);
-                    if (hero[qui].healthPoint == 0){
-                        System.out.println(hero[qui].name + " est KO");
-                    }
+            if (ennemiA.healthPoint != 0){
+                Random who = new Random();
+                do {
+                    qui = who.nextInt(nH);
+                    verif = verifHero(qui);
+                } while (verif == Ko); //Le héros est mort
+                atEn(ennemiA, hero[qui]);
+                if (hero[qui].healthPoint == 0){
+                    System.out.println(hero[qui].name + " est KO");
                 }
             }
         }
