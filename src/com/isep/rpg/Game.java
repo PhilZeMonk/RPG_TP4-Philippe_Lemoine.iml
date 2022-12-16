@@ -795,7 +795,7 @@ public class Game {
         int actR = 0;
         do{
             if (hero01.healthPoint != 0){
-                actR = tourAl1(hero01, ennemi01);
+                actR = tourAl1(hero01);
                 switch (actR){
                     case 10:
                         attaqueHe(hero01, ennemi01);
@@ -820,7 +820,7 @@ public class Game {
         while (actR == 42);
     }
 
-    public int tourAl1(Hero hero1, Ennemy[] ennemy1) {
+    public int tourAl1(Hero hero1) {
         String name = hero1.name;
         Scanner tour = new Scanner(System.in);
         System.out.println("Que va faire " + name + ":");
