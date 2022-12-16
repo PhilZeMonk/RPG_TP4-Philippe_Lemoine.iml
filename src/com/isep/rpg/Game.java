@@ -1648,6 +1648,7 @@ public class Game {
         int heal;
         int effet;
         int rep;
+        int rep0 = 0;
         Scanner manger = new Scanner(System.in);
         System.out.println("Quelle potion voulez-vous utiliser?");
         System.out.println("1) Potion de vie");
@@ -1826,7 +1827,10 @@ public class Game {
         catch(InputMismatchException e){
             System.out.println("Vous pouvez répéter la question?");
             manger.nextLine();
-            potionH(heroP,heroP2,ennemiP);
+            rep0 = 1;
+        }
+        if (rep0 == 1){
+            action(heroP,heroP2,ennemiP);
         }
     }
 
